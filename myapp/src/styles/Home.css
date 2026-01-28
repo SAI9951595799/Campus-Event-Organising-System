@@ -94,9 +94,8 @@ body, html {
   box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
 }
 
-/* 6. Dashboard Content - Pushed to the right of the Sidebar */
 .dashboard-content {
-  margin-left: -500px; /* Must match sidebar width exactly */
+  margin-left: -500px;
   margin-top: -30px;
   flex-grow: 1;
   padding: 60px;

@@ -23,7 +23,6 @@ function Home() {
 
   return (
     <div className="home-wrapper">
-      {/* --- SIDEBAR --- */}
       <aside className="sidebar">
         <h2>App Logo</h2>
         <div className="nav-links">

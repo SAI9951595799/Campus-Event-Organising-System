@@ -5,14 +5,13 @@ import "../styles/Login.css";
 
 function Login() {
   const navigate = useNavigate(); 
-  const [username, setUsername] = useState(""); // This holds the ID (Roll No or Emp ID)
+  const [username, setUsername] = useState(""); 
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student"); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      // SENDING: identifier, password, and role
       const res = await axios.post("http://127.0.0.1:5000/api/auth/login", { 
         identifier: username, 
         password,
@@ -22,10 +21,8 @@ function Login() {
       if (res.status === 200) {
         alert(`${role.charAt(0).toUpperCase() + role.slice(1)} login successful!`);
         
-        // Save user details to local storage
         localStorage.setItem("user", JSON.stringify(res.data.user));
 
-        // Role-based redirection
         if (role === "faculty") {
           navigate("/faculty-home");
         } else {
@@ -72,7 +69,6 @@ function Login() {
               required 
               placeholder=" " 
             />
-            {/* Dynamic label shows exactly what the user should enter */}
             <label>{role === "faculty" ? "Employee ID" : "Roll Number"}</label>
           </div>
 

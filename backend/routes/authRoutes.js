@@ -6,8 +6,6 @@ const router = express.Router();
 
 router.post("/login", async (req, res) => {
   try {
-    // 1. Change 'rollNumber' to a generic name like 'username' or 'identifier'
-    // This must match what you send from Axios in Login.jsx
     const { identifier, password, role } = req.body; 
 
     if (!password || !role || !identifier) {
@@ -15,13 +13,9 @@ router.post("/login", async (req, res) => {
     }
 
     let user = null;
-
-    // 2. Map the identifier to the correct database field
     if (role === "faculty") {
-      // Faculty uses employeeId in the database
       user = await Faculty.findOne({ employeeId: identifier });
     } else if (role === "student") {
-      // Student uses rollNumber in the database
       user = await Student.findOne({ rollNumber: identifier });
     } else {
       return res.status(400).json({ message: "Invalid role" });
